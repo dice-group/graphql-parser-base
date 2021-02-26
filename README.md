@@ -24,3 +24,12 @@ make -j graphql-parser-base
 There are three project-specific options you can set for CMake:
 
 - `GRAPHQL_BASE_PARSER_MARCH`: Allows you to set the -march parameter. If you are building for your local machine, you should set it to `-DSPARQL_BASE_PARSER_MARCH=native`
+
+## conan
+
+To use it with [conan](https://conan.io/) you need to add the repository:
+```shell
+conan remote add dice-group https://api.bintray.com/conan/dice-group/tentris
+```
+
+To use it add `graphql-parser-base/0.1.0@dice-group/rc1` to the `[requires]` section of your conan file.
