@@ -46,14 +46,14 @@ find_package(ANTLR REQUIRED)
 
 message("Generating GraphQL Parser.")
 antlr_target(GraphQL GraphQL.g4 LEXER PARSER LISTENER VISITOR
-        PACKAGE Dice::graphQL_parser::base
+        PACKAGE Dice::graphql_parser::base
         )
 
 # include generated files in project environment
 add_library(graphql-parser-base STATIC
         ${ANTLR_GraphQL_CXX_OUTPUTS})
 target_include_directories(graphql-parser-base PUBLIC
-        ${ANTLR_GRAPHQL_OUTPUT_DIR})
+        ${ANTLR_GraphQL_OUTPUT_DIR})
 
 set_target_properties(graphql-parser-base PROPERTIES
         CXX_STANDARD 17)
@@ -85,7 +85,7 @@ install(TARGETS graphql-parser-base
         ARCHIVE DESTINATION lib)
 
 
-    install(DIRECTORY "${ANTLR_GRAPHQL_OUTPUT_DIR}"
+    install(DIRECTORY "${ANTLR_GraphQL_OUTPUT_DIR}"
             DESTINATION "include"
             FILES_MATCHING PATTERN "*.h"
             )
